@@ -16,6 +16,24 @@ void PrintGroups(string[] t, int perLine)
 {
 
     // Write required code.
+    int i = 0;  // Iteration counter
+    while (i< t.Length) // Array iteration loop
+    {
+        if (i != t.Length) // Sign after array item condition
+        {
+            Console.Write(t[i] + ", ");  // Not the last element in the array
+        }
+        else
+        {
+            Console.Write(t[i] + ".");  // The last element in the array
+        }
+        if ((i + 1) % perLine == 0)  // Breaking the line condition: (Iteration number + 1) is a multiplication of *perLIne*
+        {
+            Console.WriteLine();
+        }
+        i++;
+    }
+    Console.WriteLine(); //  Empty line spacer
 
 }
 
@@ -29,7 +47,21 @@ void PrintColumns(string[] t, int perLine, int width)
 {
 
     // Write required code.
-
+    int i = 0; // Iteration counter
+    while (i < t.Length) // Array iteration loop
+    {
+        if (t[i].Length < width)  // Length of the item vs column width condition
+        {
+            Console.Write(t[i]); // If item length shorter that width place enrite iten name
+            int column_filling = t[i].Length; // Iterator of blank spaces in column cell
+            while (column_filling < width) // Adding spaces in column cell
+            {
+                Console.Write(" ");
+                column_filling++;
+            }
+            Console.Write("| "); 
+        }
+    }
 }
 
 
