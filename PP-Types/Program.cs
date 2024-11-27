@@ -1,6 +1,8 @@
 ﻿// Write required code.
 
 // Data - do not change it in code!
+using System.ComponentModel;
+
 string[] names = {
     "Mickey Mouse", "Minnie Mouse", "Donald Duck", "Goofy", "Pluto", "Daisy Duck", "Simba", "Nala", 
     "Timon", "Pumbaa", "Mufasa", "Ariel", "Flounder", "Sebastian", "Ursula", "Belle", "Beast", "Gaston", 
@@ -54,20 +56,23 @@ void PrintColumns(string[] t, int perLine, int width)
         {
             Console.Write(t[i]); // If item length shorter that width place enrite iten name
             int column_filling = t[i].Length; // Iterator of blank spaces in column cell
-            while (column_filling < width) // Adding spaces in column cell 
+            while (column_filling < width) // Adding spaces in column cell for equal spacing
             {
                 Console.Write(" ");
                 column_filling++;
             }
-            Console.Write("| "); // Adding column spacer
         }
         else // Item name longer than column width condition
         {
-            Console.Write(t[i][..width] + "| "); // Item name cut to column width + column spacer
+            Console.Write(t[i][..width]); // Item name cut to column width
         }
-        if ((i + 1) % perLine == 0) // // Breaking the line condition: (Iteration number + 1) is a multiplication of *perLIne*
+        if ((i + 1) % perLine != 0) // // Breaking the line condition: (Iteration number + 1) is NOT a multiplication of *perLIne*
         {
-            Console.WriteLine();
+            Console.Write("| "); // Adding a column spacer, continue in the same line
+        }
+        else
+        {
+            Console.WriteLine(); // Moving to next line without column spacer
         }
         i++;
     }
